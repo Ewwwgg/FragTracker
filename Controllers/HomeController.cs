@@ -13,9 +13,9 @@ namespace FragTracker.Controllers
 
         public IActionResult Index()
         {
-            var tournamentName = _config.GetValue<string>("Tournament__Name") ?? "LOCAL SCRIMS (No Tournament Data)";
-            var serverEnv = _config.GetValue<string>("Server__Environment") ?? "UNDEFINED_SECTOR";
-            var steamToken = _config.GetValue<string>("Steam__WebHookToken");
+            var tournamentName = _config.GetValue<string>("Tournament:Name") ?? "LOCAL SCRIMS (No Tournament Data)";
+            var serverEnv = _config.GetValue<string>("Server:Environment") ?? "UNDEFINED_SECTOR";
+            var steamToken = _config.GetValue<string>("Steam:WebHookToken");
 
             ViewBag.TournamentName = tournamentName;
             ViewBag.ServerEnvironment = serverEnv;
