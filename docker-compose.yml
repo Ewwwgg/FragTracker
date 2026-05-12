@@ -19,7 +19,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:80"
+      - "8080:8080"
     environment:
       - ConnectionStrings__DefaultConnection=Server=fragtracker-db;Database=FragTrackerDb;User Id=sa;Password=PwnedPassword!1337;TrustServerCertificate=True;
       - Tournament__Name=CYBER COLOSSEUM 2026 - MAJOR
