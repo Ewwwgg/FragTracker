@@ -3,61 +3,72 @@
 }
 
 <style>
-    /* [СВІЙ ПОЧЕРК] Неоновий кіберспортивний стиль (Cyberpunk/Neon Vibes) */
+    /* Дизайн у стилі Steam */
     body {
-        background-color: #0b0f19;
-        color: #e0e6ed;
-        font-family: 'Segoe UI', Consolas, monospace;
+        background-color: #1b2838;
+        color: #c6d4df;
+        font-family: Arial, Helvetica, sans-serif;
     }
-    .glitch-container {
-        border: 2px solid #00ffcc;
-        box-shadow: 0 0 15px #00ffcc22;
-        padding: 2rem;
-        border-radius: 8px;
-        background: radial-gradient(circle, #1a2235 0%, #0b0f19 100%);
+    .steam-container {
+        background: linear-gradient(135deg, #1e2f42 0%, #17212e 100%);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        padding: 2.5rem;
+        border-radius: 4px;
         margin-top: 30px;
     }
-    .neon-text {
-        color: #00ffcc;
-        text-shadow: 0 0 5px #00ffcc;
+    .steam-header {
+        color: #ffffff;
+        letter-spacing: 1px;
+        font-weight: 300;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        font-size: 28px;
+        margin-bottom: 20px;
     }
     .alert-panel {
-        background: #1e1e1e;
-        border-left: 4px solid #ff007f;
-        padding: 15px;
-        margin: 15px 0;
-        font-weight: bold;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 4px;
     }
     .status-badge {
         display: inline-block;
-        padding: 5px 10px;
-        background: #ff5500;
-        color: white;
-        border-radius: 3px;
-        font-size: 0.8rem;
-        box-shadow: 0 0 8px #ff5500;
+        padding: 4px 8px;
+        background: #5c7e10;
+        color: #d2efa9;
+        border-radius: 2px;
+        font-size: 0.85rem;
+    }
+    .section-title {
+        color: #66c0f4;
+        font-weight: normal;
+        margin-bottom: 10px;
+    }
+    .terminal-box {
+        background-color: #1e2024;
+        border-left: 2px solid #66c0f4;
+        padding: 15px;
+        color: #8f98a0;
+        text-align: left;
     }
 </style>
 
-<div class="text-center glitch-container">
-    <h1 class="display-4 neon-text">/// FRAGTRACKER CORE ///</h1>
-    <p class="lead">Спец-термінал відстеження статистики CS2 та Dota 2.</p>
+<div class="text-center steam-container">
+    <h1 class="steam-header">FragTracker Core</h1>
+    <p class="lead" style="color: #8f98a0; font-size: 14px;">Статистика та інфраструктура CS2 / Dota 2.</p>
     
     <div class="alert-panel text-left">
-        <h4><i class="icon">🏆</i> Поточний турнір: <span class="neon-text">@ViewBag.TournamentName</span></h4>
-        <p>Статус інфраструктури: <span class="status-badge">@ViewBag.ServerEnvironment</span></p>
+        <h4 class="section-title">ПОТОЧНИЙ ТУРНІР: <span style="color: #ffffff;">@ViewBag.TournamentName</span></h4>
+        <p style="font-size: 14px; color: #8f98a0;">Статус інфраструктури: <span class="status-badge">@ViewBag.ServerEnvironment</span></p>
     </div>
 
-    <div class="text-left p-3" style="border: 1px dashed #444; background: #000;">
-        <h5 style="color: #bbb;">[МЕРЕЖЕВИЙ ШЛЮЗ STEAM]</h5>
-        <div style="color: @(ViewBag.TokenMasked == null ? "#ff4444" : "#44ff44")">
+    <div class="terminal-box">
+        <h5 style="color: #66c0f4; font-size: 14px; text-transform: uppercase;">Мережевий шлюз Steam</h5>
+        <div style="color: @(ViewBag.TokenMasked == null ? "#ff4444" : "#c6d4df")">
             > @ViewBag.SteamStatus
         </div>
         @if (ViewBag.TokenMasked != null)
         {
-            <div style="color: #ff007f; font-family: monospace; margin-top: 10px;">
+            <div style="color: #5c7e10; margin-top: 10px;">
                 > @ViewBag.TokenMasked
             </div>
         }

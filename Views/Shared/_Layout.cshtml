@@ -8,30 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" />
     <style>
         body {
-            background-color: #0b0f19;
-            color: #e0e6ed;
-            font-family: 'Segoe UI', Consolas, monospace;
+            background-color: #1b2838;
+            color: #c6d4df;
+            font-family: Arial, Helvetica, sans-serif;
         }
-        .navbar-cyber {
-            background-color: #05080f !important;
-            border-bottom: 2px solid #00ffcc;
+        .navbar-steam {
+            background-color: #171a21 !important;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.4);
         }
-        .nav-link { letter-spacing: 1px; }
-        .footer-cyber { border-top: 1px dashed #ff007f; margin-top: 50px; paddingTop: 20px; color: #555; }
+        .navbar-brand {
+            color: #c6d4df !important;
+            font-size: 22px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .nav-link { 
+            color: #c6d4df !important;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        .nav-link:hover { color: #ffffff !important; }
+        .footer-steam { margin-top: 50px; padding: 20px 0; color: #8f98a0; font-size: 12px; border-top: 1px transparent; }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark navbar-cyber mb-3">
+        <nav class="navbar navbar-expand-sm navbar-dark navbar-steam mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index" style="color: #00ffcc; font-weight: bold;">[ FRAG::TRACKER ]</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FRAG TRACKER</a>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Dashboard</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">STORE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Players" asp-action="Index" style="color: #ff007f;">Manage Players</a>
+                            <a class="nav-link" asp-area="" asp-controller="Players" asp-action="Index">COMMUNITY (PLAYERS)</a>
                         </li>
                     </ul>
                 </div>
@@ -44,9 +55,9 @@
         </main>
     </div>
 
-    <footer class="footer-cyber text-center">
+    <footer class="footer-steam text-center">
         <div class="container">
-            &copy; 2026 - FragTracker ESports Inc. - SYSTEM ONLINE
+            &copy; 2026 Valve Corporation. All rights reserved. FragTracker System.
         </div>
     </footer>
 </body>
