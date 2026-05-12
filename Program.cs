@@ -14,7 +14,8 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    // Створюємо схему БД (замість ручних міграцій, оскільки міграцій наразі немає)
+    // Видаляємо стару пусту БД і створюємо наново зі всіма таблицями
+    dbContext.Database.EnsureDeleted();
     dbContext.Database.EnsureCreated();
 }
 
