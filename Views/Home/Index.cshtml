@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "FragTracker Dashboard";
+}
+
+<style>
+    /* [СВІЙ ПОЧЕРК] Неоновий кіберспортивний стиль (Cyberpunk/Neon Vibes) */
+    body {
+        background-color: #0b0f19;
+        color: #e0e6ed;
+        font-family: 'Segoe UI', Consolas, monospace;
+    }
+    .glitch-container {
+        border: 2px solid #00ffcc;
+        box-shadow: 0 0 15px #00ffcc22;
+        padding: 2rem;
+        border-radius: 8px;
+        background: radial-gradient(circle, #1a2235 0%, #0b0f19 100%);
+        margin-top: 30px;
+    }
+    .neon-text {
+        color: #00ffcc;
+        text-shadow: 0 0 5px #00ffcc;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+    .alert-panel {
+        background: #1e1e1e;
+        border-left: 4px solid #ff007f;
+        padding: 15px;
+        margin: 15px 0;
+        font-weight: bold;
+    }
+    .status-badge {
+        display: inline-block;
+        padding: 5px 10px;
+        background: #ff5500;
+        color: white;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        box-shadow: 0 0 8px #ff5500;
+    }
+</style>
+
+<div class="text-center glitch-container">
+    <h1 class="display-4 neon-text">/// FRAGTRACKER CORE ///</h1>
+    <p class="lead">Спец-термінал відстеження статистики CS2 та Dota 2.</p>
+    
+    <div class="alert-panel text-left">
+        <h4><i class="icon">🏆</i> Поточний турнір: <span class="neon-text">@ViewBag.TournamentName</span></h4>
+        <p>Статус інфраструктури: <span class="status-badge">@ViewBag.ServerEnvironment</span></p>
+    </div>
+
+    <div class="text-left p-3" style="border: 1px dashed #444; background: #000;">
+        <h5 style="color: #bbb;">[МЕРЕЖЕВИЙ ШЛЮЗ STEAM]</h5>
+        <div style="color: @(ViewBag.TokenMasked == null ? "#ff4444" : "#44ff44")">
+            > @ViewBag.SteamStatus
+        </div>
+        @if (ViewBag.TokenMasked != null)
+        {
+            <div style="color: #ff007f; font-family: monospace; margin-top: 10px;">
+                > @ViewBag.TokenMasked
+            </div>
+        }
+    </div>
+</div>

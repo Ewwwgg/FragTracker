@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  fragtracker-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=PwnedPassword!1337
+    ports:
+      - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'PwnedPassword!1337' -Q 'SELECT 1' -No || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  fragtracker-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=fragtracker-db;Database=FragTrackerDb;User Id=sa;Password=PwnedPassword!1337;TrustServerCertificate=True;
+      - Tournament__Name=CYBER COLOSSEUM 2026 - MAJOR
+      - Server__Environment=Local-Docker-Compose
+      - Steam__WebHookToken=VALVE-SECRET-888
+    depends_on:
+      fragtracker-db:
+        condition: service_healthy

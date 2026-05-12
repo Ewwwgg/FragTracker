@@ -1,0 +1,44 @@
+@model IEnumerable<FragTracker.Models.ProPlayer>
+@{
+    ViewData["Title"] = "Roster";
+}
+
+<style>
+    .cyber-table { color: #00ffcc; background: #0b0f19; border: 1px solid #00ffcc; text-transform: uppercase; }
+    .cyber-table th { border-bottom: 2px solid #ff007f; color: #ff007f; }
+    .cyber-table td { border-bottom: 1px dashed #333; }
+    .btn-cyber { background: transparent; border: 1px solid #00ffcc; color: #00ffcc; transition: all 0.3s; }
+    .btn-cyber:hover { background: #00ffcc; color: #000; }
+    .btn-cyber-danger { border: 1px solid #ff007f; color: #ff007f; }
+    .btn-cyber-danger:hover { background: #ff007f; color: #000; }
+</style>
+
+<h2 class="neon-text mt-4">/// REGISTERED GLADIATORS ///</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-cyber mt-2">[+] REGISTER NEW PLAYER</a>
+</p>
+<table class="table cyber-table mt-3">
+    <thead>
+        <tr>
+            <th>NICKNAME</th>
+            <th>TEAM</th>
+            <th>GAME</th>
+            <th>RATING (ELO)</th>
+            <th>ACTIONS</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="font-weight: bold;">@item.Nickname</td>
+            <td>@item.Team</td>
+            <td><span class="badge" style="background: @(item.Game == "CS2" ? "#f99e1a" : "#d02a24")">@item.Game</span></td>
+            <td style="color: #fff;">@item.Rating</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-cyber-danger">[X] ELIMINATE</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

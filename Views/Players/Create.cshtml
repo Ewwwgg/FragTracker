@@ -1,0 +1,39 @@
+@model FragTracker.Models.ProPlayer
+@{
+    ViewData["Title"] = "Add Player";
+}
+
+<div class="glitch-container" style="max-width: 500px; margin: auto;">
+    <h3 class="neon-text">/// NEW REGISTRATION ///</h3>
+    <hr style="border-color: #ff007f;" />
+    
+    <form asp-action="Create">
+        <div class="form-group mb-3">
+            <label asp-for="Nickname" class="control-label neon-text" style="font-size: 12px;"></label>
+            <input asp-for="Nickname" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
+            <span asp-validation-for="Nickname" class="text-danger"></span>
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Team" class="control-label neon-text" style="font-size: 12px;"></label>
+            <input asp-for="Team" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
+        </div>
+        <div class="form-group mb-3">
+            <label asp-for="Game" class="control-label neon-text" style="font-size: 12px;"></label>
+            <select asp-for="Game" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;">
+                <option value="CS2">Counter-Strike 2</option>
+                <option value="Dota2">Dota 2</option>
+            </select>
+        </div>
+        <div class="form-group mb-4">
+            <label asp-for="Rating" class="control-label neon-text" style="font-size: 12px;"></label>
+            <input asp-for="Rating" type="number" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="[ EXECUTE ]" class="btn btn-cyber w-100" />
+        </div>
+    </form>
+    
+    <div class="mt-3 text-center">
+        <a asp-action="Index" style="color: #666; text-decoration: none;">&lt; BACK TO ROSTER</a>
+    </div>
+</div>

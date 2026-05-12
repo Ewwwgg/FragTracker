@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: fragtracker-config
+  namespace: esport-prod
+data:
+  # [ПОЧЕРК] Імена турнірів, що звучать епічно
+  Tournament__Name: "CYBER COLOSSEUM 2026 - MAJOR"
+  Server__Environment: "Hyper-Cluster Prod"
