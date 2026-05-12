@@ -3,37 +3,61 @@
     ViewData["Title"] = "Add Player";
 }
 
-<div class="glitch-container" style="max-width: 500px; margin: auto;">
-    <h3 class="neon-text">/// NEW REGISTRATION ///</h3>
-    <hr style="border-color: #ff007f;" />
+<style>
+    .steam-form-container {
+        background: linear-gradient(135deg, #1e2f42 0%, #17212e 100%);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        border-radius: 4px;
+        max-width: 500px; 
+        margin: 40px auto;
+    }
+    .steam-input {
+        background-color: #192533;
+        border: 1px solid #3c6182;
+        padding: 8px 12px;
+        width: 100%;
+        color: #c6d4df;
+    }
+    .steam-input:focus { border-color: #66c0f4; outline: none; box-shadow: none; color: #ffffff; background-color: #213247; }
+    .steam-label { color: #8091a2; font-size: 12px; text-transform: uppercase; margin-bottom: 5px; display: block; letter-spacing: 1px;}
+    .btn-steam-blue {
+        background: linear-gradient(to bottom, rgba(71,166,255,1) 5%, rgba(44,115,194,1) 95%);
+        color: #ffffff; border: none; padding: 10px 20px; border-radius: 2px; font-size: 15px; cursor: pointer; width: 100%; transition: 0.2s; font-weight: normal;
+    }
+    .btn-steam-blue:hover { background: linear-gradient(to bottom, rgba(102,192,244,1) 5%, rgba(44,115,194,1) 95%); color: #ffffff; }
+</style>
+
+<div class="steam-form-container">
+    <h3 style="color: #ffffff; font-weight: 300; font-size: 24px; text-transform: uppercase; margin-bottom: 25px; border-bottom: 1px solid #2a475e; padding-bottom: 10px;">Register New Player</h3>
     
     <form asp-action="Create">
         <div class="form-group mb-3">
-            <label asp-for="Nickname" class="control-label neon-text" style="font-size: 12px;"></label>
-            <input asp-for="Nickname" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
-            <span asp-validation-for="Nickname" class="text-danger"></span>
+            <label asp-for="Nickname" class="steam-label"></label>
+            <input asp-for="Nickname" class="steam-input" />
+            <span asp-validation-for="Nickname" class="text-danger" style="font-size: 12px;"></span>
         </div>
         <div class="form-group mb-3">
-            <label asp-for="Team" class="control-label neon-text" style="font-size: 12px;"></label>
-            <input asp-for="Team" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
+            <label asp-for="Team" class="steam-label"></label>
+            <input asp-for="Team" class="steam-input" />
         </div>
         <div class="form-group mb-3">
-            <label asp-for="Game" class="control-label neon-text" style="font-size: 12px;"></label>
-            <select asp-for="Game" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;">
+            <label asp-for="Game" class="steam-label"></label>
+            <select asp-for="Game" class="steam-input">
                 <option value="CS2">Counter-Strike 2</option>
                 <option value="Dota2">Dota 2</option>
             </select>
         </div>
         <div class="form-group mb-4">
-            <label asp-for="Rating" class="control-label neon-text" style="font-size: 12px;"></label>
-            <input asp-for="Rating" type="number" class="form-control" style="background: #111; color: #00ffcc; border: 1px solid #00ffcc;" />
+            <label asp-for="Rating" class="steam-label"></label>
+            <input asp-for="Rating" type="number" class="steam-input" />
         </div>
         <div class="form-group">
-            <input type="submit" value="[ EXECUTE ]" class="btn btn-cyber w-100" />
+            <input type="submit" value="Add Player to Roster" class="btn-steam-blue" />
         </div>
     </form>
     
-    <div class="mt-3 text-center">
-        <a asp-action="Index" style="color: #666; text-decoration: none;">&lt; BACK TO ROSTER</a>
+    <div class="mt-4 text-center">
+        <a asp-action="Index" style="color: #66c0f4; text-decoration: none; font-size: 14px;">&lt; Back to Roster</a>
     </div>
 </div>

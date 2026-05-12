@@ -4,41 +4,56 @@
 }
 
 <style>
-    .cyber-table { color: #00ffcc; background: #0b0f19; border: 1px solid #00ffcc; text-transform: uppercase; }
-    .cyber-table th { border-bottom: 2px solid #ff007f; color: #ff007f; }
-    .cyber-table td { border-bottom: 1px dashed #333; }
-    .btn-cyber { background: transparent; border: 1px solid #00ffcc; color: #00ffcc; transition: all 0.3s; }
-    .btn-cyber:hover { background: #00ffcc; color: #000; }
-    .btn-cyber-danger { border: 1px solid #ff007f; color: #ff007f; }
-    .btn-cyber-danger:hover { background: #ff007f; color: #000; }
+    .steam-table-container {
+        background-color: rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 4px;
+        margin-top: 20px;
+    }
+    .steam-table { color: #c6d4df; width: 100%; border-collapse: collapse; }
+    .steam-table th { background-color: #1a1a1a; padding: 10px; font-weight: normal; color: #66c0f4; text-transform: uppercase; font-size: 14px; border-bottom: 2px solid #2a475e; }
+    .steam-table td { padding: 10px; border-bottom: 1px solid #2a475e; background-color: #16202d; font-size: 14px; }
+    .btn-steam-green { 
+        background: linear-gradient(to right, #75b022 5%, #588a1b 95%);
+        color: #d2efa9; border: none; padding: 6px 15px; border-radius: 2px; text-decoration: none; display: inline-block; font-size: 14px;
+    }
+    .btn-steam-green:hover { background: linear-gradient(to right, #8ed629 5%, #6aa621 95%); color: #ffffff; }
+    .btn-steam-grey {
+        background: rgba( 103, 193, 245, 0.2 );
+        color: #67c1f5; border: none; padding: 4px 10px; border-radius: 2px; text-decoration: none; font-size: 12px;
+    }
+    .btn-steam-grey:hover { background: rgba( 103, 193, 245, 0.4 ); color: #ffffff; }
+    .game-badge { background: #2a475e; color: #66c0f4; padding: 3px 6px; border-radius: 3px; font-size: 12px; border: 1px solid #3c6182; }
 </style>
 
-<h2 class="neon-text mt-4">/// REGISTERED GLADIATORS ///</h2>
+<h2 style="color: #ffffff; font-weight: 300; font-size: 28px; letter-spacing: 1px; text-transform: uppercase; margin-top: 20px;">Community (Players)</h2>
 
 <p>
-    <a asp-action="Create" class="btn btn-cyber mt-2">[+] REGISTER NEW PLAYER</a>
+    <a asp-action="Create" class="btn-steam-green mt-2">Add New Player</a>
 </p>
-<table class="table cyber-table mt-3">
-    <thead>
-        <tr>
-            <th>NICKNAME</th>
-            <th>TEAM</th>
-            <th>GAME</th>
-            <th>RATING (ELO)</th>
-            <th>ACTIONS</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="steam-table-container">
+    <table class="steam-table">
+        <thead>
+            <tr>
+                <th>Nickname</th>
+                <th>Team</th>
+                <th>Game</th>
+                <th>Rating (ELO)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td style="font-weight: bold;">@item.Nickname</td>
+            <td style="color: #ffffff; font-weight: bold;">@item.Nickname</td>
             <td>@item.Team</td>
-            <td><span class="badge" style="background: @(item.Game == "CS2" ? "#f99e1a" : "#d02a24")">@item.Game</span></td>
-            <td style="color: #fff;">@item.Rating</td>
+            <td><span class="game-badge">@item.Game</span></td>
+            <td>@item.Rating</td>
             <td>
-                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-cyber-danger">[X] ELIMINATE</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn-steam-grey">Delete</a>
             </td>
         </tr>
 }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
