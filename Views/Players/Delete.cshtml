@@ -1,0 +1,69 @@
+@model FragTracker.Models.ProPlayer
+@{
+    ViewData["Title"] = "Delete Player";
+}
+
+<style>
+    .steam-form-container {
+        background: linear-gradient(135deg, #1e2f42 0%, #17212e 100%);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        padding: 2rem;
+        border-radius: 4px;
+        max-width: 500px; 
+        margin: 40px auto;
+    }
+    .steam-info-row {
+        padding: 8px 0;
+        border-bottom: 1px solid #2a475e;
+        color: #c6d4df;
+    }
+    .steam-info-label {
+        color: #8091a2;
+        font-size: 12px;
+        text-transform: uppercase;
+        width: 100px;
+        display: inline-block;
+    }
+    .btn-steam-danger {
+        background: linear-gradient(to bottom, #d9534f 5%, #c9302c 95%);
+        color: #ffffff; border: none; padding: 10px 20px; border-radius: 2px; font-size: 15px; cursor: pointer; transition: 0.2s;
+    }
+    .btn-steam-danger:hover { background: linear-gradient(to bottom, #f06a66 5%, #c9302c 95%); color: #ffffff; }
+    .btn-steam-grey {
+        background: rgba( 103, 193, 245, 0.2 );
+        color: #67c1f5; border: none; padding: 10px 20px; border-radius: 2px; text-decoration: none; display: inline-block;
+    }
+    .btn-steam-grey:hover { background: rgba( 103, 193, 245, 0.4 ); color: #ffffff; text-decoration: none; }
+</style>
+
+<div class="steam-form-container">
+    <h3 style="color: #d9534f; font-weight: 300; font-size: 24px; text-transform: uppercase; margin-bottom: 10px;">Remove Player</h3>
+    <p style="color: #c6d4df; margin-bottom: 20px;">Are you sure you want to remove this player from the roster?</p>
+
+    <div style="background-color: #192533; border: 1px solid #3c6182; padding: 15px; margin-bottom: 25px;">
+        <div class="steam-info-row">
+            <span class="steam-info-label">Nickname:</span>
+            <strong style="color: #ffffff;">@Model.Nickname</strong>
+        </div>
+        <div class="steam-info-row">
+            <span class="steam-info-label">Team:</span>
+            @Model.Team
+        </div>
+        <div class="steam-info-row">
+            <span class="steam-info-label">Game:</span>
+            <span style="color: #66c0f4;">@Model.Game</span>
+        </div>
+        <div class="steam-info-row" style="border-bottom: none;">
+            <span class="steam-info-label">Rating:</span>
+            @Model.Rating ELO
+        </div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div style="display: flex; gap: 15px;">
+            <input type="submit" value="Yes, Remove" class="btn-steam-danger" />
+            <a asp-action="Index" class="btn-steam-grey">Cancel</a>
+        </div>
+    </form>
+</div>
